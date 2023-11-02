@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="checkout.css">
+  <title>Checkout</title>
+</head>
+<body>
+   <!-- header -->
+   <header>
+    <div class="nav-bar-container">
+      <h1 class="logo"><a href="#home">shopIt</a></h1>
+
+      <nav class="js-menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about-us">About us</a></li>
+          <li><a href="#store">Store</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="cart-menu-container">
+        <a><img class="cart-icon" src="shopit-images/cart2.png"></a>
+        <p class="js-cart-quantity cart-quantity">0</p>
+        <img class="js-menu menu-icon" src="shopit-images/hamburger.png" onclick="tuggleMenu()">
+      </div>
+    </div>
+  </header>
+
+   <!-- cart items section -->
+   <section class="cart-section">
+    <h1 class="checkout">checkout (<span class="js-checkout-quantity"></span>)</h1>
+    <div class="main-product-container">
+
+      <div class="cart-items-displey">
+
+      </div>
+
+      <!-- the cart summary or calculator -->
+      <div class="cart-calculator-container">
+        <h3 class="summary">Order Summary</h3>
+        <div class="item-summary-container">
+          <p class="items-summary">Items(1):</p>
+          <p class="items-price-sum">$0.00</p>
+        </div>
+        <div class="shipping-summary-container">
+          <p class="shipping-handling">Shipping & handling:</p>
+          <div class="shipping-fee-div">
+            <p class="shipping-fee">$0.00</p>
+          </div>
+        </div>
+        <div class="before-tax-summary-container">
+          <p class="before-tax">Total before tax:</p>
+          <p class="before-tax-price">$0.00</p>
+        </div>
+        <div class="plus-summary-container">
+          <p class="tax-pay">Tax(10%):</p>
+          <p class="plus-tax-sum">$0.00</p>
+        </div>
+        <div class="total-summary-container">
+          <h3 class="order-total">Total Price Of Order</h3>
+          <h3 class="total-price">$0.00</h3>
+        </div>
+      </div>
+    </div>  
+  </section>
+
+  <script type="module" src="scripts/cartscript/cart.js"></script>
+</body>
+</html>

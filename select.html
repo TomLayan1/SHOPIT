@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Selecting an option from the select option</p>
+  <select id="select1" onchange="getQuantity()"> 
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <p class="js-display"></p>
+
+  <script>
+    function getQuantity() {
+      let selectElement = document.getElementById('select1');
+      let value = selectElement.value;
+
+      let display = document.querySelector('.js-display');
+      display.innerHTML = value;
+    }
+  </script>
+</body>
+</html>

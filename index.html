@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="shopit.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>shopIt</title>
+</head>
+<body>
+  <!-- header -->
+  <header>
+    <div class="nav-bar-container">
+      <h1 class="logo"><a href="#home">shopIt</a></h1>
+
+      <nav class="js-menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about-us">About us</a></li>
+          <li><a href="#store">Store</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="cart-menu-container">
+        <a href="checkout.html"><img class="cart-icon" src="shopit-images/cart2.png"></a>
+        <p class="js-cart-quantity cart-quantity">0</p>
+        <img class="js-menu menu-icon" src="shopit-images/hamburger.png" onclick="tuggleMenu()">
+      </div>
+    </div>
+  </header>
+
+  <!-- Home section -->
+  <section id="home">
+    <div class="banner">
+      <div class="description">
+        <h2 class="name">Parsonver Smart Watch for Women</h2>
+        <h4 class="dimension">1.69" (43mm)Smartwatch for Android Phones and iPhone Compatible</h4>
+        <h2 class="price">$30.99</h2>
+        <button class="buy-now" type="button">Buy now</button>
+        <button class="add-to-cart" type="button" onclick="addCartQuantity()">Add to cart</button>
+        <div class="social-media">
+          <a class="social" href="#"><i class='bx bxl-facebook'></i></a>
+          <a class="social" href="#"><i class='bx bxl-instagram' ></i></a>
+          <a class="social" href="#"><i class='bx bxl-twitter' ></i></a>
+        </div>
+      </div>
+      <div class="watch-image">
+        <img class="watch" alt="Parsonver Smart Watch for Women, 1.69 inches
+        (43mm)Smartwatch for Android Phones and iPhone Compatible
+        $30.99" src="shopit-images/watch.png">
+      </div>
+    </div>
+  </section>
+
+  <!-- Store section -->
+  <section id="store">
+    <h2 class="our-store">OUR STORE</h2>
+    <h3 class="appliance-container">SHOP APPLIANCES</h3>
+    <div class="home-app">
+        <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product1.png">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product1.png">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product1.png">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product1.png">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product1.png">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product1.png">
+        <h3>Lorem Ipsum</h3>
+      </div>
+    </div>
+
+    <h3 class="gadget-container">SHOP GADGET</h3>
+    <div class="home-app">
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product2.jpg">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product2.jpg">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product2.jpg">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product2.jpg">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product2.jpg">
+        <h3>Lorem Ipsum</h3>
+      </div>
+      <div class="category">
+        <img class="category-image" alt="#" src="shopit-images/product2.jpg">
+        <h3>Lorem Ipsum</h3>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Product section -->
+  <section id="products">
+    <h2 class="fast-selling">FAST SELLING</h2>
+    <div class="js-product-grid product-grid"></div>
+  </section>
+
+  <!-- contact section -->
+  <section id="contact">
+    <h2 class="contact-us">CONTACT US</h3>
+    <p class="contact-statement">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus doloribus nisi commodi repellat.</p>
+    <div class="contact-container">
+      <div class="app-store-image-container">
+        <h4 class="download">DOWNLOAD GETECH FREE MOBILE APP</h4>
+        <div class="mobile-store-container">
+          <img class="app-store-image" alt="google-play-store" src="shopit-images/googlestore.png">
+          <img class="app-store-image" alt="apple-store" src="shopit-images/applestore.png">
+        </div>
+      </div>
+      <div class="form-container">
+        <form action="#">
+          <input type="text" for="name" placeholder="Enter name here">
+          <input type="email" for="email" placeholder="Enter email here">
+          <select id="location">
+            <option disabled="true" selected="true">Select your location</option>
+            <option value="Australia">Australia</option>
+            <option value="america">America</option>
+            <option value="berlin">Berlin</option>
+            <option value="nigeria">Nigeria</option>
+            <option value="paris">Paris</option>
+          </select>
+          <textarea name="comment" id="message" cols="30" rows="9" placeholder="Enter your texct here"></textarea>
+          <button class="form-button"><a class="form-button-link">Submit</a></button>
+        </form>
+        <div class="contact-icon"><i class='bx bxs-contact'></i></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer section -->
+  <section id="footer">
+    <div class="footer">
+      <h2 class="footer-logo"><a class="footer-logo-link" href="#home">getech</a></h2>
+      <div class="footer-container">
+        <div class="footer-nav-container">
+          <div class="lorem-footer">
+            <p class="lorem-ipsum">LOREM IPSUM</p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+          </div>
+
+          <div class="lorem-footer">
+            <p class="lorem-ipsum">LOREM IPSUM</p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+          </div>
+
+          <div class="lorem-footer">
+            <p class="lorem-ipsum">LOREM IPSUM</p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+          </div>
+
+          <div class="lorem-footer">
+            <p class="lorem-ipsum">LOREM IPSUM</p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+            <p class="footer-nav"><a class="footer-link" href="#">Lorem</a></p>
+          </div>
+        </div>
+        <div class="payment-gateway-container">
+          <img class="payment-gateway-img" src="shopit-images/mastercard.png">
+          <img class="payment-gateway-img" src="shopit-images/paypal.png">
+          <img class="payment-gateway-img" src="shopit-images/visa.png">
+          <img class="payment-gateway-img" src="shopit-images/verve.png">
+        </div>
+      </div>
+    </div>
+    <p class="designer">designed by Tomisin</p>
+  </section>
+
+  <!-- WE LOAD THE PRODUCT & CART JS CODE USING MODULES -->
+  <!-- <script src="data/cart.js"></script> -->
+  <!-- <script src="data/products.js"></script> -->
+
+  <!-- Entry point -->
+  <script type="module" src="scripts/shopit.js"></script>
+</body>
+</html>
