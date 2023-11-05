@@ -36,6 +36,7 @@ export function addToCart(productId) {
     cart.push({
       productId: productId,
       quantity: quantity
+      
     });
   }
 }
@@ -105,7 +106,6 @@ let cartItem = document.querySelector('.cart-items-displey');
 if (cartItem){
   cartItem.innerHTML = cartSummaryHTML;
 }
-console.log(localStorage.getItem('cart'));
 
 document.querySelectorAll('.delete-btn').forEach((deleteButton) =>{
   deleteButton.addEventListener('click', ()=> {

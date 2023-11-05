@@ -2,15 +2,21 @@ import {cart, addToCart} from './cartscript/cart.js';
 import {shopitProduct} from '../data/products.js';
 
 // for drop down menu
-function tuggleMenu() {
+const tuggleMenu = document.querySelector('.js-menu-icon');
+console.log(tuggleMenu);
+tuggleMenu.addEventListener('click', () =>{
   const menuNav = document.querySelector('.js-menu');
+
   if (menuNav.style.display === 'none'){
     menuNav.style.display = 'block';
   }
   else{
     menuNav.style.display = 'none';
   }
-}
+});
+// function tuggleMenu() {
+
+// }
 
 // we make use of the accumulator pattern to combine all the html
 let productHTML = '';

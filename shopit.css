@@ -391,7 +391,7 @@ button{
 }
 .product-container:hover
 .add-cart-btn{
-  transform: translateY(0%);
+  transform: translateX(0%);
   visibility: visible;
 }
 .product-container:hover{
@@ -420,96 +420,6 @@ button{
   border: 1px solid grey;
   cursor: pointer;
 }
-/*
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
-  flex-wrap: wrap;
-  margin: auto;
-  width: 100%;
-  margin-top: 50px;
-  place-items: center;
-}
-
-.product-container {
-  width: 202px;
-  overflow: hidden;
-  margin-top: 40px;
-  background-color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-.product-image-container {
-  width: 205px;
-  height: 202px;
-}
-
-.product-image {
-  width: 100%;
-  height: auto;
-}
-
-.product-info-container {
-  width: 100%;
-  height: 61px;
-  margin-top: 51px;
-}
-.product-info{
-  font-size: 14px;
-  display: block;
-  text-align: center;
-}
-
-.star-container {
-  background-color: yellow;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.star-img{
-  width: 80%;
-}
-.rating{
-  width: 15%;
-  font-weight: bold;
-}
-.price-quantity-container{
-  background-color: blue;
-  width: 100%;
-}
-
-.btn {
-  width: 100%;
-  border: none;
-  font-size: 18px;
-  text-align: center;
-  color: white;
-  background-color: black;
-  padding: 10px;
-  font-weight: 300;
-  border-radius: 5px;
-  margin-bottom: 1px;
-  transform: translateY(110%);
-  transition: 0.3s;
-}
-
-.product-price {
-  text-align: center;
-}
-
-.product-container:hover {
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-  width: 203px;
-}
-.product-container:hover .btn {
-  transform: translateY(0%);
-  visibility: visible;
-}
-*/
 
 .download {
   text-align: center;
@@ -716,127 +626,20 @@ textarea{
   text-align: center;
 }
 
-/* for mobile phone */
-@media only screen and (max-width: 600px){
-  .nav-bar-container{
-    width: 100%;
-    height: 20%;
-  }
 
-  nav{
-    height: 92vh;
-    position: absolute;
-    top: 63px;
-    background: linear-gradient(90deg, rgb(79, 31, 143), rgb(183, 153, 223));
-    width: 100%;
-    margin: 0px;
-    padding-top: 30px;
-    display: none;
-  }
-
-  nav, ul{
-    flex-direction: column;
-  }
-
-  nav, ul, li a{
-    text-align: center;
-    margin-bottom: 35px;
-    margin-left: 0px;
-  }
-
-  .menu-icon{
-    visibility: visible;
-  }
-
-  /* home */
-  #home{
-    width: 100%;
-    height: auto;
-  }
-
-  .banner{
-    width: 100%;
-    flex-direction: column-reverse
-  }
-
-  .description{
-    width: 95%;
-    margin-left: 20px;
-    margin-top: 0px;
-  }
-
-  h4{
-    line-height: 25px;
-    margin-top: 0px;
-  }
-
-  .price{
-    margin-top: 0px;
-  }
-
-  button{
-    padding: 7px 15px;
-    margin-top: 0px;
-    border-radius: 50px;
-    border-bottom-left-radius: 0px;
-    font-size: 14px;
-  }
-
-  /*For store*/
-  #store{
-    width: 100%;
-    padding-top: 90px;
-  }
-
-  .home-app{
-    display: grid;
-    grid-template-columns: 180px 180px 180px;
-  }
-
-  /* For product */
-  .product-list {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* For contact */
-  .contact-container{
-    flex-direction: column-reverse;
-  }
-
-  .form-container {
-    padding-left: 0px;
-    padding-bottom: 20px;
-  }
-
-  .contact-icon{
-    display: none;
-  }
-
-  /* for footer */
-  .footer-nav-container{
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .payment-gateway-img{
-    width: 27%;
-    display: inline-block;
-    margin-left: 35px;
-  }
-
-}
 
 /* for tablet */
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 1024px){
   .nav-bar-container{
     width: 100%;
     height: 20%;
   }
 
   nav{
-    height: 92vh;
+    height: 43vh;
     position: absolute;
     top: 63px;
-    background: linear-gradient(45deg, rgb(79, 31, 143), rgb(183, 153, 223));
+    background: linear-gradient(45deg, black, white);
     width: 100%;
     margin: 0px;
     padding-top: 30px;
@@ -906,6 +709,13 @@ textarea{
   .product-list {
     grid-template-columns: 1fr 1fr;
   }
+  .product-grid{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .add-cart-btn{
+    transform: translatex(0%);
+  }
 
   /* For contact */
   .contact-container{
@@ -932,4 +742,128 @@ textarea{
     display: inline-block;
     margin-left: 35px;
   }
+}
+
+/* for mobile phone */
+@media only screen and (max-width: 480px){
+  .nav-bar-container{
+    width: 100%;
+    height: 20%;
+  }
+
+  nav{
+    height: 92vh;
+    position: absolute;
+    top: 63px;
+    background: linear-gradient(90deg, rgb(79, 31, 143), rgb(183, 153, 223));
+    width: 100%;
+    margin: 0px;
+    padding-top: 30px;
+    display: none;
+  }
+
+  nav, ul{
+    flex-direction: column;
+  }
+
+  nav ul li a{
+    text-align: center;
+    margin-bottom: 35px;
+    margin-left: 0px;
+    font-size: 24px;
+    color: white;
+  }
+  /* nav ul li a{
+    color: white;
+    font-size: 18px;
+
+  } */
+
+  .menu-icon{
+    visibility: visible;
+  }
+
+  /* home */
+  #home{
+    width: 100%;
+    height: auto;
+  }
+
+  .banner{
+    width: 100%;
+    flex-direction: column-reverse
+  }
+
+  .description{
+    width: 95%;
+    margin-left: 20px;
+    margin-top: 0px;
+  }
+
+  h4{
+    line-height: 25px;
+    margin-top: 0px;
+  }
+
+  .price{
+    margin-top: 0px;
+  }
+
+  button{
+    padding: 7px 15px;
+    margin-top: 0px;
+    border-radius: 50px;
+    border-bottom-left-radius: 0px;
+    font-size: 14px;
+  }
+
+  /*For store*/
+  #store{
+    width: 100%;
+    padding-top: 90px;
+  }
+
+  .home-app{
+    display: grid;
+    grid-template-columns: 180px 180px;
+  }
+
+  /* For product */
+  .product-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .add-cart-btn{
+    transform: translatex(0%);
+  }
+
+  /* For contact */
+  .contact-container{
+    flex-direction: column-reverse;
+  }
+
+  .form-container {
+    padding-left: 0px;
+    padding-bottom: 20px;
+  }
+
+  .contact-icon{
+    display: none;
+  }
+
+  /* for footer */
+  .footer-nav-container{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .payment-gateway-img{
+    width: 27%;
+    display: inline-block;
+    margin-left: 35px;
+  }
+
 }
