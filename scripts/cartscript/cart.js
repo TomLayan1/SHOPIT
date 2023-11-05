@@ -1,7 +1,7 @@
 import {shopitProduct} from '../../data/products.js';
 
 // export cart variable with the use of module
-export let cart = JSON.parse(localStorage.getItem('cart'))
+export let cart = JSON.parse(localStorage.getItem('cart'));
 
 if (!cart){
   cart = [
@@ -15,6 +15,8 @@ if (!cart){
     }
   ];
 }
+
+console.log(cart);
 
 function saveToCart(){
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -43,8 +45,8 @@ export function addToCart(productId) {
     cart.push({
       productId: productId,
       quantity: quantity
-      
     });
+    saveToCart();
   }
 }
 
@@ -66,7 +68,7 @@ cart.forEach((cartItem) =>{
   })
 
   //generate the cart html 
-  cartSummaryHTML += `<div class="main-item-container">
+  cartSummaryHTML += `<div class="main-item-container js-main-item-container-${matchingItem.id}">
     <div class="product-img-container">
       <img class="item-img" src="${matchingItem.image}">
     </div>
@@ -107,7 +109,7 @@ cart.forEach((cartItem) =>{
     </div>
   </div>`;
 
-})
+});
 // put the generated cart on the screen
 let cartItem = document.querySelector('.cart-items-displey');
 if (cartItem){
@@ -118,7 +120,12 @@ document.querySelectorAll('.delete-btn').forEach((deleteButton) =>{
   deleteButton.addEventListener('click', ()=> {
     let productId = deleteButton.dataset.productId;
     removeFromCart(productId);
-    console.log(cart);
+
+    // to remove the item ferom the web page
+    let container = document.querySelector(`.js-main-item-container-${productId}`);
+    container.remove();
+
+    saveToCart()
   });
 });
 
@@ -130,4 +137,6 @@ function removeFromCart(productId) {
     }
   })
   cart = newCart;
+
+  saveToCart();
 }
