@@ -78,9 +78,9 @@ cart.forEach((cartItem) =>{
         <p class="price">$${(matchingItem.priceCents/100).toFixed(2)}</p>
       </div>
       <div class="quantity-container">
-        <button class="reduce-btn">-</button>
-        <p class="item-quantity">${cartItem.quantity}</p>
-        <button class="add-btn">+</button>
+        <button class="reduce-btn js-reduce-btn" data-product-id="${matchingItem.id}">-</button>
+        <p class="item-quantity js-item-quantity-${matchingItem.id}">${cartItem.quantity}</p>
+        <button class="add-btn js-add-btn" data-product-id="${matchingItem.id}">+</button>
         <button class="js-delete-btn delete-btn" data-product-id="${matchingItem.id}">Delete</button>
       </div>
     </div>
@@ -140,3 +140,38 @@ function removeFromCart(productId) {
 
   saveToCart();
 }
+
+// for reducing and increasing cart quantity
+
+// for reduce button
+document.querySelectorAll(`.js-reduce-btn`).forEach((reduceButton) =>{
+  reduceButton.addEventListener('click', ()=>{
+    let productId = reduceButton.dataset.productId;
+    
+    cart.forEach((cartItem)=>{
+      let itemQuantity = document.querySelector(`.js-item-quantity-${productId}`);
+
+      if (cartItem.productId === productId){
+        cartItem.quantity -= 1;
+        itemQuantity.innerHTML = cartItem.quantity;
+      }
+      saveToCart();
+    })
+  })
+})
+
+// forincrease button
+document.querySelectorAll(`.js-add-btn`).forEach((addButton) =>{
+  addButton.addEventListener('click', ()=>{
+    let productId = addButton.dataset.productId;
+    
+    cart.forEach((cartItem)=>{
+      let itemQuantity = document.querySelector(`.js-item-quantity-${productId}`);
+      if (cartItem.productId === productId){
+        cartItem.quantity += 1;
+        itemQuantity.innerHTML = cartItem.quantity;
+      }
+      saveToCart();
+    })
+  })
+})
