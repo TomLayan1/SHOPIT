@@ -7,8 +7,6 @@ if (!cart){
   cart = [];
 }
 
-console.log(cart);
-
 function saveToCart(){
   localStorage.setItem('cart', JSON.stringify(cart));
 };

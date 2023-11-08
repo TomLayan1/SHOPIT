@@ -1,4 +1,4 @@
-import {cart, addToCart} from './cartscript/cart.js';
+import {cart, addToCart,} from './cartscript/cart.js';
 import {shopitProduct} from '../data/products.js';
 
 // for drop down menu
@@ -79,21 +79,23 @@ function showAddedText() {
 // to update cart quantity on the page
 function updateCartQuantity() {
   let cartQuantity = 0;
-    cart.forEach((cartItem) => {
-      cartQuantity += cartItem.quantity;
-    })
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+  cart.forEach((cartItem) =>{
+    cartQuantity += cartItem.quantity;
+  })
+  const quantityIndicator = document.querySelector('.js-cart-quantity');
+  quantityIndicator.innerHTML = cartQuantity;
+  localStorage.setItem('quantityIndicator',quantityIndicator);
 }
 
 // to show added text when add to cart button is clicked and disappear after 2s
 function showAddedt(button){
-  let addedText = button.parentElement.parentElement.querySelector('.js-added-text')
-    addedText.innerHTML = 'Added';
-    if (addedText.innerHTML === 'Added'){
-      setTimeout(() => {
-        addedText.innerHTML = '';
-      },2000)
-    }
+  let addedText = button.parentElement.parentElement.querySelector('.js-added-text');
+  addedText.innerHTML = 'Added';
+  if (addedText.innerHTML === 'Added'){
+    setTimeout(() => {
+      addedText.innerHTML = '';
+    },2000)
+  }
 }
 
 document.querySelectorAll('.js-add-btn').forEach((button) => {
@@ -103,6 +105,35 @@ document.querySelectorAll('.js-add-btn').forEach((button) => {
     console.log(productId);
     addToCart(productId);
     updateCartQuantity();
-    console.log(cart);
   });
 });
+
+// for contact page
+let errorMessage = document.querySelector('.js-error-message');
+let name = document.querySelector('.js-mane-input');
+let email = document.querySelector('.js-email-input');
+let country = document.querySelector('.js-country-selection')
+
+const submitButton = document.querySelector('.js-form-button');
+console.log(submitButton)
+submitButton.addEventListener('click', (e)=>{
+  e.preventDefault();
+  sendMessage();
+})
+
+function sendMessage() {
+  const nameValue = name.value;
+  const emailValue = email.value;
+  const countryValue = country.value;
+
+  if (nameValue === ''){
+    errorMessage.innerHTML = 'Enter name';
+  }
+  if (emailValue === ''){
+    errorMessage.innerHTML = 'Enter email';
+  }
+  console.log(countryValue)
+  if(countryValue = ''){
+    country.style.border = '2px solid red';
+  }
+}
