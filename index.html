@@ -24,8 +24,9 @@
       </nav>
 
       <div class="cart-menu-container">
-        <a href="checkout.html"><img class="cart-icon" src="shopit-images/cart2.png"></a>
-        <p class="js-cart-quantity cart-quantity">0</p>
+        <a href="checkout.html"><img class="cart-icon" src="shopit-images/cart2.png">
+          <p class="js-cart-quantity cart-quantity">0</p>
+        </a>
         <img class="js-menu-icon menu-icon" src="shopit-images/hamburger.png" onclick="">
       </div>
     </div>
@@ -39,7 +40,7 @@
         <h4 class="dimension">1.69" (43mm)Smartwatch for Android Phones and iPhone Compatible</h4>
         <h2 class="price">$30.99</h2>
         <button class="buy-now" type="button">Buy now</button>
-        <button class="add-to-cart" type="button" onclick="addCartQuantity()">Add to cart</button>
+        <button class="add-to-cart" type="button">Add to cart</button>
         <div class="social-media">
           <a class="social" href="#"><i class='bx bxl-facebook'></i></a>
           <a class="social" href="#"><i class='bx bxl-instagram' ></i></a>
@@ -134,18 +135,19 @@
       </div>
       <div class="form-container">
         <form action="#">
-          <input type="text" for="name" placeholder="Enter name here">
-          <input type="email" for="email" placeholder="Enter email here">
-          <select id="location">
+          <p class="js-error-message" style="color: red; text-align: center; margin: 3px;">Error Message</p>
+          <input class="js-mane-input" type="text" for="name" placeholder="Enter name here">
+          <input class="js-email-input" type="email" for="email" placeholder="Enter email here">
+          <select id="location" class="js-country-selection">
             <option disabled="true" selected="true">Select your location</option>
             <option value="Australia">Australia</option>
-            <option value="america">America</option>
-            <option value="berlin">Berlin</option>
-            <option value="nigeria">Nigeria</option>
-            <option value="paris">Paris</option>
+            <option value="America">America</option>
+            <option value="Berlin">Berlin</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Paris">Paris</option>
           </select>
           <textarea name="comment" id="message" cols="30" rows="9" placeholder="Enter your texct here"></textarea>
-          <button class="form-button"><a class="form-button-link">Submit</a></button>
+          <button class="form-button js-form-button"><a class="form-button-link">Submit</a></button>
         </form>
         <div class="contact-icon"><i class='bx bxs-contact'></i></div>
       </div>

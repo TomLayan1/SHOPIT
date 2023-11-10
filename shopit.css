@@ -626,7 +626,129 @@ textarea{
   text-align: center;
 }
 
+/* for mobile phone */
+@media only screen and (max-width: 480px){
+  .nav-bar-container{
+    width: 100%;
+    height: 20%;
+  }
 
+  nav{
+    height: 92vh;
+    position: absolute;
+    top: 63px;
+    background: linear-gradient(90deg, black, white);
+    width: 100%;
+    margin: 0px;
+    padding-top: 30px;
+    display: none;
+  }
+
+  nav, ul{
+    flex-direction: column;
+  }
+
+  nav ul li a{
+    text-align: center;
+    margin-bottom: 35px;
+    margin-left: 0px;
+    font-size: 24px;
+    color: white;
+  }
+  /* nav ul li a{
+    color: white;
+    font-size: 18px;
+
+  } */
+
+  .menu-icon{
+    visibility: visible;
+  }
+
+  /* home */
+  #home{
+    width: 100%;
+    height: auto;
+  }
+
+  .banner{
+    width: 100%;
+    flex-direction: column-reverse
+  }
+
+  .description{
+    width: 95%;
+    margin-left: 20px;
+    margin-top: 0px;
+  }
+
+  h4{
+    line-height: 25px;
+    margin-top: 0px;
+  }
+
+  .price{
+    margin-top: 0px;
+  }
+
+  button{
+    padding: 7px 15px;
+    margin-top: 0px;
+    border-radius: 50px;
+    border-bottom-left-radius: 0px;
+    font-size: 14px;
+  }
+
+  /*For store*/
+  #store{
+    width: 100%;
+    padding-top: 90px;
+  }
+
+  .home-app{
+    display: grid;
+    grid-template-columns: 180px 180px;
+  }
+
+  /* For product */
+  .product-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .add-cart-btn{
+    transform: translatex(0%);
+  }
+
+  /* For contact */
+  .contact-container{
+    flex-direction: column-reverse;
+  }
+
+  .form-container {
+    padding-left: 0px;
+    padding-bottom: 20px;
+  }
+
+  .contact-icon{
+    display: none;
+  }
+
+  /* for footer */
+  .footer-nav-container{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .payment-gateway-img{
+    width: 27%;
+    display: inline-block;
+    margin-left: 35px;
+  }
+
+}
 
 /* for tablet */
 @media only screen and (max-width: 1024px){
@@ -744,126 +866,3 @@ textarea{
   }
 }
 
-/* for mobile phone */
-@media only screen and (max-width: 480px){
-  .nav-bar-container{
-    width: 100%;
-    height: 20%;
-  }
-
-  nav{
-    height: 92vh;
-    position: absolute;
-    top: 63px;
-    background: linear-gradient(90deg, rgb(79, 31, 143), rgb(183, 153, 223));
-    width: 100%;
-    margin: 0px;
-    padding-top: 30px;
-    display: none;
-  }
-
-  nav, ul{
-    flex-direction: column;
-  }
-
-  nav ul li a{
-    text-align: center;
-    margin-bottom: 35px;
-    margin-left: 0px;
-    font-size: 24px;
-    color: white;
-  }
-  /* nav ul li a{
-    color: white;
-    font-size: 18px;
-
-  } */
-
-  .menu-icon{
-    visibility: visible;
-  }
-
-  /* home */
-  #home{
-    width: 100%;
-    height: auto;
-  }
-
-  .banner{
-    width: 100%;
-    flex-direction: column-reverse
-  }
-
-  .description{
-    width: 95%;
-    margin-left: 20px;
-    margin-top: 0px;
-  }
-
-  h4{
-    line-height: 25px;
-    margin-top: 0px;
-  }
-
-  .price{
-    margin-top: 0px;
-  }
-
-  button{
-    padding: 7px 15px;
-    margin-top: 0px;
-    border-radius: 50px;
-    border-bottom-left-radius: 0px;
-    font-size: 14px;
-  }
-
-  /*For store*/
-  #store{
-    width: 100%;
-    padding-top: 90px;
-  }
-
-  .home-app{
-    display: grid;
-    grid-template-columns: 180px 180px;
-  }
-
-  /* For product */
-  .product-list {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .product-grid{
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .add-cart-btn{
-    transform: translatex(0%);
-  }
-
-  /* For contact */
-  .contact-container{
-    flex-direction: column-reverse;
-  }
-
-  .form-container {
-    padding-left: 0px;
-    padding-bottom: 20px;
-  }
-
-  .contact-icon{
-    display: none;
-  }
-
-  /* for footer */
-  .footer-nav-container{
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .payment-gateway-img{
-    width: 27%;
-    display: inline-block;
-    margin-left: 35px;
-  }
-
-}
