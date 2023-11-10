@@ -57,46 +57,54 @@ cart.forEach((cartItem) =>{
   })
 
   //generate the cart html 
-  cartSummaryHTML += `<div class="main-item-container js-main-item-container-${matchingItem.id}">
-    <div class="product-img-container">
-      <img class="item-img" src="${matchingItem.image}">
-    </div>
-    <div class="name-price-quantity">
-      <div class="name-price-container">
-        <p class="item-name">${matchingItem.name}</p>
-        <p class="price">$${(matchingItem.priceCents/100).toFixed(2)}</p>
-      </div>
-      <div class="quantity-container">
-        <button class="reduce-btn js-reduce-btn" data-product-id="${matchingItem.id}">-</button>
-        <p class="item-quantity js-item-quantity-${matchingItem.id}">${cartItem.quantity}</p>
-        <button class="add-btn js-add-btn" data-product-id="${matchingItem.id}">+</button>
-        <button class="js-delete-btn delete-btn" data-product-id="${matchingItem.id}">Delete</button>
-      </div>
-    </div>
-    <div class="shipping-option-container">
-      <div class="shipping-option">
-        <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
-        <div class="term-container">
-          <p class="shipping-term">Thursday, September 14</p>
-          <p class="term-fee">FREE Shipping</p>
-        </div>        
-      </div>
-      <div class="shipping-option">
-        <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
-        <div class="term-container">
-          <p class="shipping-term">Friday, September 8</p>
-          <p class="term-fee">$4.99 - Shipping</p>
-        </div>        
-      </div>
-      <div class="shipping-option">
-        <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
-        <div class="term-container">
-          <p class="shipping-term">Wednesday, September 6</p>
-          <p class="term-fee">$9.99 - Shipping</p>
-        </div>        
-      </div>
-    </div>
-  </div>`;
+  cartSummaryHTML += `        <div class="main-item-container js-main-item-container-${matchingItem.id}">
+          <div class="date-img-name-container">
+            <div class="delivery-date-container">
+              <h3 class="delivery-date">delivery date: Thursday, November 16</h3>
+            </div>
+            <div class="img-name-container">
+              <div class="product-img-container">
+                <img class="item-img" src="${matchingItem.image}">
+              </div>
+              <div class="name-price-quantity">
+                <div class="name-price-container">
+                  <p class="item-name">${matchingItem.name}</p>
+                  <p class="price">$${(matchingItem.priceCents/100).toFixed(2)}</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="reduce-btn js-reduce-btn" data-product-id="${matchingItem.id}">-</button>
+                  <p class="item-quantity js-item-quantity-${matchingItem.id}">${cartItem.quantity}</p>
+                  <button class="add-btn js-add-btn" data-product-id="${matchingItem.id}">+</button>
+                  <button class="delete-btn js-delete-btn" data-product-id="${matchingItem.id}">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="shipping-option-container">
+            <p style="text-align: center; font-weight: bold;" class="pick-delivery-date">Select a delivery date</p>
+            <div class="shipping-option">
+              <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
+              <div class="term-container">
+                <p class="shipping-term">Thursday, September 14</p>
+                <p class="term-fee">FREE Shipping</p>
+              </div>        
+            </div>
+            <div class="shipping-option">
+              <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
+              <div class="term-container">
+                <p class="shipping-term">Friday, September 8</p>
+                <p class="term-fee">$4.99 - Shipping</p>
+              </div>        
+            </div>
+            <div class="shipping-option">
+              <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
+              <div class="term-container">
+                <p class="shipping-term">Wednesday, September 6</p>
+                <p class="term-fee">$9.99 - Shipping</p>
+              </div>        
+            </div>
+          </div>
+        </div>`;
 
 });
 // put the generated cart on the screen
@@ -131,7 +139,6 @@ function removeFromCart(productId) {
 }
 
 // for reducing and increasing cart quantity
-
 // for reduce button
 document.querySelectorAll(`.js-reduce-btn`).forEach((reduceButton) =>{
   reduceButton.addEventListener('click', ()=>{
