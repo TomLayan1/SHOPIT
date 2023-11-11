@@ -1,4 +1,6 @@
 import {shopitProduct} from '../../data/products.js';
+import {deliveryOption} from '../../data/deliveryOption.js';
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 // export cart variable with the use of module
 export let cart = JSON.parse(localStorage.getItem('cart'));
@@ -33,7 +35,8 @@ export function addToCart(productId) {
   else{
     cart.push({
       productId: productId,
-      quantity: quantity
+      quantity: quantity,
+      deliveryOptionId: '1'
     });
     saveToCart();
   }
@@ -56,8 +59,9 @@ cart.forEach((cartItem) =>{
     }
   })
 
+  
   //generate the cart html 
-  cartSummaryHTML += `        <div class="main-item-container js-main-item-container-${matchingItem.id}">
+  cartSummaryHTML += `<div class="main-item-container js-main-item-container-${matchingItem.id}">
           <div class="date-img-name-container">
             <div class="delivery-date-container">
               <h3 class="delivery-date">delivery date: Thursday, November 16</h3>
@@ -82,31 +86,38 @@ cart.forEach((cartItem) =>{
           </div>
           <div class="shipping-option-container">
             <p style="text-align: center; font-weight: bold;" class="pick-delivery-date">Select a delivery date</p>
-            <div class="shipping-option">
-              <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
-              <div class="term-container">
-                <p class="shipping-term">Thursday, September 14</p>
-                <p class="term-fee">FREE Shipping</p>
-              </div>        
-            </div>
-            <div class="shipping-option">
-              <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
-              <div class="term-container">
-                <p class="shipping-term">Friday, September 8</p>
-                <p class="term-fee">$4.99 - Shipping</p>
-              </div>        
-            </div>
-            <div class="shipping-option">
-              <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
-              <div class="term-container">
-                <p class="shipping-term">Wednesday, September 6</p>
-                <p class="term-fee">$9.99 - Shipping</p>
-              </div>        
-            </div>
+            ${deliveryOptionHTML(matchingItem, cartItem)}
           </div>
         </div>`;
-
 });
+
+function deliveryOptionHTML(matchingItem, cartItem) {
+  let deliveryHTML = '';
+
+  deliveryOption.forEach((deliveryOption) => {
+    const today = dayjs();
+    const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+    const dateString = deliveryDate.format('dddd, MMMM D')
+
+    const priceString = deliveryOption.priceCents === 0
+    ? 'FREE'
+    : `$${(deliveryOption.priceCents/100).toFixed(2)}`
+
+    const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
+  
+    deliveryHTML += `
+    <div class="shipping-option">
+      <input class="select-term" type="radio" ${isChecked ? 'checked' : ''} name="delivery-option-${matchingItem.id}">
+      <div class="term-container">
+        <p class="shipping-term">${dateString}</p>
+        <p class="term-fee">${priceString}-Shipping</p>
+      </div>       
+    </div>
+    `;
+  })
+  return deliveryHTML;
+}
+
 // put the generated cart on the screen
 let cartItem = document.querySelector('.cart-items-displey');
 if (cartItem){
