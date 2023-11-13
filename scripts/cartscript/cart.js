@@ -1,5 +1,5 @@
 import {shopitProduct} from '../../data/products.js';
-import {deliveryOption} from '../../data/deliveryOption.js';
+import {deliveryOptions} from '../../data/deliveryOption.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 // export cart variable with the use of module
@@ -59,12 +59,26 @@ cart.forEach((cartItem) =>{
     }
   })
 
+  const deliveryOptionId = cartItem.deliveryOption;
+  let deliveryOption;
+  deliveryOptions.forEach((option) => {
+    if(option.id === deliveryOptionId){
+      deliveryOption = option;
+    }
+  });
+
+  const today = dayjs();
+  const deliveryDate = today.add(deliveryOptions.deliveryDays, 'days');
+  const dateString = deliveryDate.format('dddd, MMMM D');
+  console.log(dateString);
+
+
   
   //generate the cart html 
   cartSummaryHTML += `<div class="main-item-container js-main-item-container-${matchingItem.id}">
           <div class="date-img-name-container">
             <div class="delivery-date-container">
-              <h3 class="delivery-date">delivery date: Thursday, November 16</h3>
+              <h3 class="delivery-date">delivery date: </h3>
             </div>
             <div class="img-name-container">
               <div class="product-img-container">
@@ -94,12 +108,12 @@ cart.forEach((cartItem) =>{
 function deliveryOptionHTML(matchingItem, cartItem) {
   let deliveryHTML = '';
 
-  deliveryOption.forEach((deliveryOption) => {
+  deliveryOptions.forEach((deliveryOption) => {
     const today = dayjs();
     const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-    const dateString = deliveryDate.format('dddd, MMMM D')
+    const dateString = deliveryDate.format('dddd, MMMM D');
 
-    const priceString = deliveryOption.priceCents === 0
+    const priceString = deliveryOptions.priceCents === 0
     ? 'FREE'
     : `$${(deliveryOption.priceCents/100).toFixed(2)}`
 
