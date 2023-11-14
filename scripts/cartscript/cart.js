@@ -9,9 +9,11 @@ if (!cart){
   cart = [];
 }
 
-function saveToCart(){
+function saveToStorage(){
   localStorage.setItem('cart', JSON.stringify(cart));
+  console.log(cart);
 };
+saveToStorage()
 // export addToCart function with the use of module
 export function addToCart(productId) {
 
@@ -38,7 +40,7 @@ export function addToCart(productId) {
       quantity: quantity,
       deliveryOptionId: '1'
     });
-    saveToCart();
+    saveToStorage();
   }
 }
 
@@ -59,7 +61,7 @@ cart.forEach((cartItem) =>{
     }
   })
 
-  const deliveryOptionId = cartItem.deliveryOption;
+  const deliveryOptionId = cartItem.deliveryOptionId;
   let deliveryOption;
   deliveryOptions.forEach((option) => {
     if(option.id === deliveryOptionId){
@@ -68,17 +70,14 @@ cart.forEach((cartItem) =>{
   });
 
   const today = dayjs();
-  const deliveryDate = today.add(deliveryOptions.deliveryDays, 'days');
+  const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
   const dateString = deliveryDate.format('dddd, MMMM D');
-  console.log(dateString);
-
-
   
   //generate the cart html 
   cartSummaryHTML += `<div class="main-item-container js-main-item-container-${matchingItem.id}">
           <div class="date-img-name-container">
             <div class="delivery-date-container">
-              <h3 class="delivery-date">delivery date: </h3>
+              <h3 class="delivery-date">delivery date: ${dateString}</h3>
             </div>
             <div class="img-name-container">
               <div class="product-img-container">
@@ -105,11 +104,15 @@ cart.forEach((cartItem) =>{
         </div>`;
 });
 
+// for delivery option
+// function to generate delivery date
 function deliveryOptionHTML(matchingItem, cartItem) {
   let deliveryHTML = '';
 
   deliveryOptions.forEach((deliveryOption) => {
+    // using the dayjs external library
     const today = dayjs();
+
     const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
     const dateString = deliveryDate.format('dddd, MMMM D');
 
@@ -120,7 +123,7 @@ function deliveryOptionHTML(matchingItem, cartItem) {
     const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
   
     deliveryHTML += `
-    <div class="shipping-option">
+    <div class="shipping-option js-delivery-option" data-product-id="${matchingItem.id}" data-delivery-option-id="${deliveryOption.id}">
       <input class="select-term" type="radio" ${isChecked ? 'checked' : ''} name="delivery-option-${matchingItem.id}">
       <div class="term-container">
         <p class="shipping-term">${dateString}</p>
@@ -132,6 +135,28 @@ function deliveryOptionHTML(matchingItem, cartItem) {
   return deliveryHTML;
 }
 
+// to update delivery date based on selection
+function updateDeliveryOption(productId, deliveryOptionId){
+  let matchingItem;
+
+  cart.forEach((cartItem)  => {
+    if (productId === cartItem.productId) {
+      matchingItem = cartItem;
+    }
+  });
+  matchingItem.deliveryOptionId = deliveryOptionId;
+  
+  saveToStorage();
+}
+
+const optionContainer = document.querySelectorAll('.js-delivery-option');
+optionContainer.forEach((optionSelector) =>{
+  optionSelector.addEventListener('click', () =>{
+    const {productId, deliveryOptionId} = optionSelector.dataset;
+    console.log(productId);
+    updateDeliveryOption(productId, deliveryOptionId);
+  });
+});
 // put the generated cart on the screen
 let cartItem = document.querySelector('.cart-items-displey');
 if (cartItem){
@@ -147,7 +172,7 @@ document.querySelectorAll('.delete-btn').forEach((deleteButton) =>{
     let container = document.querySelector(`.js-main-item-container-${productId}`);
     container.remove();
 
-    saveToCart()
+    saveToStorage();
   });
 });
 
@@ -160,7 +185,7 @@ function removeFromCart(productId) {
   })
   cart = newCart;
 
-  saveToCart();
+  saveToStorage();
 }
 
 // for reducing and increasing cart quantity
@@ -180,7 +205,7 @@ document.querySelectorAll(`.js-reduce-btn`).forEach((reduceButton) =>{
           itemQuantity.innerHTML = cartItem.quantity;
         }
       }
-      saveToCart();
+      saveToStorage();
     })
   })
 })
@@ -200,7 +225,7 @@ document.querySelectorAll(`.js-add-btn`).forEach((addButton) =>{
           itemQuantity.innerHTML = cartItem.quantity;
         }
       }
-      saveToCart();
+      saveToStorage();
     })
   })
 })
