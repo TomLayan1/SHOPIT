@@ -23,8 +23,8 @@
       </nav> -->
 
       <div class="cart-menu-container">
-        <a><img class="cart-icon" src="shopit-images/cart2.png"></a>
-        <p class="js-cart-quantity cart-quantity">0</p>
+        <!-- <a><img class="cart-icon" src="shopit-images/cart2.png"></a>
+        <p class="js-cart-quantity cart-quantity">0</p> -->
         <img class="js-menu menu-icon" src="shopit-images/hamburger.png" onclick="tuggleMenu()">
       </div>
     </div>
@@ -35,8 +35,50 @@
     <h1 class="checkout">checkout (<span class="js-checkout-quantity"></span>)</h1>
     <div class="main-product-container">
 
-      <div class="cart-items-displey">
-        
+      <div class="cart-items-displey js-cart-items-displey">
+        <div class="main-item-container">
+          <h3 class="delivery-date">delivery date: Wednesday, September 6</h3>
+          <div class="date-img-name-container">
+            <div class="product-img-container">
+              <img class="item-img" src="images/watch.png">
+            </div>
+            <div class="name-price-quantity">
+              <div class="name-price-container">
+                <p class="item-name">Haier Thermocool Washing Machine 8/5 KG- Wash & Dry</p>
+                <p class="price">$0.00</p>
+              </div>
+              <div class="quantity-container">
+                <button class="reduce-btn">-</button>
+                <p class="item-quantity">0</p>
+                <button class="add-btn">+</button>
+                <button class="delete-btn">Delete</button>
+              </div>
+            </div>
+            <div class="shipping-option-container">
+              <div class="shipping-option">
+                <input class="select-term" type="radio">
+                <div class="term-container">
+                  <p class="shipping-date">Thursday, September 14</p>
+                  <p class="term-fee">FREE Shipping</p>
+                </div>
+              </div>
+              <div class="shipping-option">
+                <input class="select-term" type="radio">
+                <div class="term-container">
+                  <p class="shipping-date">Friday, September 8</p>
+                  <p class="term-fee">$4.99 - Shipping</p>
+                </div>
+              </div>
+              <div class="shipping-option">
+                <input class="select-term" type="radio">
+                <div class="term-container">
+                  <p class="shipping-date">Wednesday, September 6</p>
+                  <p class="term-fee">$9.99 - Shipping</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- the cart summary or calculator -->
@@ -68,6 +110,6 @@
     </div>  
   </section>
 
-  <script type="module" src="scripts/cartscript/cart.js"></script>
+  <script type="module" src="scripts/cartscript/checkout.js"></script>
 </body>
 </html>
