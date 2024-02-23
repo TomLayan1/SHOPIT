@@ -1,5 +1,6 @@
 import { cart } from './cart.js';
 import { shopitProduct } from '../../data/products.js';
+import { formatCurrency } from '../utils/money.js';
 
 // loop throught the cart, generating the checkout html, store the cart item usiing accumulator pattarn
 let cartSummaryHTML = '';
@@ -26,7 +27,7 @@ cart.forEach((cartItem)=> {
             <div class="name-price-quantity">
               <div class="name-price-container">
                 <p class="item-name">${matchingItem.name}</p>
-                <p class="price">$${(matchingItem.priceCents/100).toFixed(2)}</p>
+                <p class="price">$${formatCurrency(matchingItem.priceCents)}</p>
               </div>
               <div class="quantity-container">
                 <button class="reduce-btn js-reduce-btn" data-product-id="${matchingItem.id}">-</button>
@@ -37,21 +38,21 @@ cart.forEach((cartItem)=> {
             </div>
             <div class="shipping-option-container">
               <div class="shipping-option">
-                <input class="select-term" type="radio">
+                <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}" checked>
                 <div class="term-container">
                   <p class="shipping-date">Thursday, September 14</p>
                   <p class="term-fee">FREE Shipping</p>
                 </div>
               </div>
               <div class="shipping-option">
-                <input class="select-term" type="radio">
+                <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
                 <div class="term-container">
                   <p class="shipping-date">Friday, September 8</p>
                   <p class="term-fee">$4.99 - Shipping</p>
                 </div>
               </div>
               <div class="shipping-option">
-                <input class="select-term" type="radio">
+                <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
                 <div class="term-container">
                   <p class="shipping-date">Wednesday, September 6</p>
                   <p class="term-fee">$9.99 - Shipping</p>
@@ -80,7 +81,6 @@ reduceBtn.forEach((reduceBtn)=>{
         if (cartItem.quantity < 1) {
           cartItem.quantity = 1;
           itemQuantity.innerHTML = cartItem.quantity;
-
         }
       }
     })

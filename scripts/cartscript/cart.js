@@ -20,7 +20,6 @@ export function addToCart(productId) {
   
   const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
   const quantity = Number(quantitySelector.value)
-  console.log(quantity);
 
   if(matchingItem){
     matchingItem.quantity += quantity;
