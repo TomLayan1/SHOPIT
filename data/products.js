@@ -1,5 +1,21 @@
 // 1. We save the data (the information about our product) in to an object put in an array:
 export const shopitProduct = [
+    {
+    id: "a82c6bac-3067-4e68-a5ba-d827ac0be010",
+    image: "images/products/straw-sunhat.webp",
+    name: "Straw Lifeguard Sun Hat",
+    rating: {
+      stars: 4,
+      count: 215
+    },
+    priceCents: 2200,
+    keywords: [
+      "hats",
+      "straw hats",
+      "summer",
+      "apparel"
+    ]
+  },
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
