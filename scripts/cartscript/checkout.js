@@ -1,6 +1,8 @@
 import { cart, removeFromCart } from './cart.js';
 import { shopitProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+import { deliveryOptions } from '../../data/deliveryOption.js';
 
 // loop throught the cart, generating the checkout html, store the cart item usiing accumulator pattarn
 let cartSummaryHTML = '';
@@ -33,32 +35,30 @@ cart.forEach((cartItem)=> {
                 <button class="delete-btn js-delete-btn" data-product-id="${matchingItem.id}">Delete</button>
               </div>
             </div>
-            <div class="shipping-option-container">
-              <div class="shipping-option">
-                <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}" checked>
-                <div class="term-container">
-                  <p class="shipping-date">Thursday, September 14</p>
-                  <p class="term-fee">FREE Shipping</p>
-                </div>
-              </div>
-              <div class="shipping-option">
-                <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
-                <div class="term-container">
-                  <p class="shipping-date">Friday, September 8</p>
-                  <p class="term-fee">$4.99 - Shipping</p>
-                </div>
-              </div>
-              <div class="shipping-option">
-                <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
-                <div class="term-container">
-                  <p class="shipping-date">Wednesday, September 6</p>
-                  <p class="term-fee">$9.99 - Shipping</p>
-                </div>
-              </div>
-            </div>
+            <div class="shipping-option-container">${deliveryOptionHTML(matchingItem)}</div>
           </div>
         </div>`
 });
+
+function deliveryOptionHTML(matchingItem) {
+  let deliveryHTML = '';
+  deliveryOptions.forEach((deliveryOption) =>{
+    const today = dayjs();
+    const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+    const dateString = deliveryDate.format('dddd, MMMM D');
+    const priceString =  deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} -`;
+    deliveryHTML += `
+      <div class="shipping-option">
+        <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
+        <div class="term-container">
+          <p class="shipping-date">${dateString}</p>
+          <p class="term-fee">${priceString} Shipping</p>
+        </div>
+      </div>
+    `
+  });
+  return deliveryHTML;
+}
 
 document.querySelector('.js-cart-items-displey').innerHTML = cartSummaryHTML;
 
