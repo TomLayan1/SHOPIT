@@ -17,8 +17,28 @@ cart.forEach((cartItem)=> {
     }
   });
 
+
+    // get the deliveryOptionId out of the cart 
+  const deliveryOptionId = cartItem.deliveryOptionId;
+
+  // Use the id to find the full delivery option
+  let deliveryOption;
+
+  deliveryOptions.forEach((option) => {
+    // 
+    if (option.id === deliveryOptionId) {
+      deliveryOption = option;
+    }
+  });
+
+
+    const today = dayjs();
+    const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+    const dateString = deliveryDate.format('dddd, MMMM D');
+
+
   cartSummaryHTML += `    <div class="main-item-container js-main-item-container-${matchingItem.id}">
-          <h3 class="delivery-date">delivery date: Wednesday, September 6</h3>
+          <h3 class="delivery-date">delivery date: ${dateString}</h3>
           <div class="date-img-name-container">
             <div class="product-img-container">
               <img class="item-img" src="${matchingItem.image}">
