@@ -35,21 +35,24 @@ cart.forEach((cartItem)=> {
                 <button class="delete-btn js-delete-btn" data-product-id="${matchingItem.id}">Delete</button>
               </div>
             </div>
-            <div class="shipping-option-container">${deliveryOptionHTML(matchingItem)}</div>
+            <div class="shipping-option-container">${deliveryOptionHTML(matchingItem, cartItem)}</div>
           </div>
         </div>`
 });
 
-function deliveryOptionHTML(matchingItem) {
+function deliveryOptionHTML(matchingItem, cartItem) {
   let deliveryHTML = '';
   deliveryOptions.forEach((deliveryOption) =>{
     const today = dayjs();
     const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
     const dateString = deliveryDate.format('dddd, MMMM D');
     const priceString =  deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} -`;
+    
+    const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
+    
     deliveryHTML += `
       <div class="shipping-option">
-        <input class="select-term" type="radio" name="delivery-option-${matchingItem.id}">
+        <input class="select-term" type="radio" ${isChecked ? 'checked' : ''} name="delivery-option-${matchingItem.id}">
         <div class="term-container">
           <p class="shipping-date">${dateString}</p>
           <p class="term-fee">${priceString} Shipping</p>
