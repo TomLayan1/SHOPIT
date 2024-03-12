@@ -1,4 +1,4 @@
-import { cart, removeFromCart } from './cart.js';
+import { cart, removeFromCart, updateDeliveryOption } from './cart.js';
 import { shopitProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
@@ -18,23 +18,23 @@ cart.forEach((cartItem)=> {
   });
 
 
-    // get the deliveryOptionId out of the cart 
+  // get the deliveryOptionId out of the cart 
   const deliveryOptionId = cartItem.deliveryOptionId;
 
   // Use the id to find the full delivery option
   let deliveryOption;
 
   deliveryOptions.forEach((option) => {
-    // 
+    // check for matching id
     if (option.id === deliveryOptionId) {
       deliveryOption = option;
     }
   });
 
 
-    const today = dayjs();
-    const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-    const dateString = deliveryDate.format('dddd, MMMM D');
+  const today = dayjs();
+  const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+  const dateString = deliveryDate.format('dddd, MMMM D');
 
 
   cartSummaryHTML += `    <div class="main-item-container js-main-item-container-${matchingItem.id}">
@@ -71,7 +71,7 @@ function deliveryOptionHTML(matchingItem, cartItem) {
     const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
     
     deliveryHTML += `
-      <div class="shipping-option">
+      <div class="shipping-option js-shipping-option" data-product-id ="${matchingItem.id}" data-delivery-option-id="${deliveryOption.id}">
         <input class="select-term" type="radio" ${isChecked ? 'checked' : ''} name="delivery-option-${matchingItem.id}">
         <div class="term-container">
           <p class="shipping-date">${dateString}</p>
@@ -84,6 +84,17 @@ function deliveryOptionHTML(matchingItem, cartItem) {
 }
 
 document.querySelector('.js-cart-items-displey').innerHTML = cartSummaryHTML;
+
+
+
+// add eventListers to the delivery options
+document.querySelectorAll('.js-shipping-option').forEach((optionElement) => {
+  optionElement.addEventListener('click', () => {
+    // get values out of data attribute
+    const {productId, deliveryOptionId} = optionElement.dataset;
+    updateDeliveryOption(productId, deliveryOptionId)
+  });
+});
 
 // making the delete button interactive
 let deleteBtn = document.querySelectorAll('.js-delete-btn');
