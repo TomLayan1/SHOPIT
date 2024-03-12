@@ -60,7 +60,7 @@ export function removeFromCart(productId){
     saveToStorage();
 }
 
-// A function to update deliveryOptionId in thr cart
+// A function to update deliveryOptionId in the cart
 export function updateDeliveryOption(productId, deliveryOptionId) {
   // loop through the cart and find the product
   let matchingItem;
@@ -74,7 +74,7 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
   // update item deliveryOptionId
   matchingItem.deliveryOptionId = deliveryOptionId;
 
-  
+
   saveToStorage();
 }
 
