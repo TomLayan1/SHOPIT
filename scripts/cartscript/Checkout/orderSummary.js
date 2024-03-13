@@ -1,8 +1,8 @@
 import { cart, removeFromCart, updateDeliveryOption } from '../cart.js';
-import { shopitProduct } from '../../../data/products.js';
+import { shopitProduct, getProduct } from '../../../data/products.js';
 import { formatCurrency } from '../../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-import { deliveryOptions } from '../../../data/deliveryOption.js';
+import { deliveryOptions, getDeliveryOption } from '../../../data/deliveryOption.js';
 
 // Put all the codes in a function and re-run them by calling the function whenever changes are made.
 export function renderOrderSummary() {
@@ -12,26 +12,14 @@ export function renderOrderSummary() {
   cart.forEach((cartItem)=> {
     const productId = cartItem.productId;
 
-    let matchingItem;
-    shopitProduct.forEach((product)=> {
-      if(product.id === productId) {
-        matchingItem = product;
-      }
-    });
+    const matchingItem = getProduct(productId)
 
 
     // get the deliveryOptionId out of the cart 
     const deliveryOptionId = cartItem.deliveryOptionId;
 
     // Use the id to find the full delivery option
-    let deliveryOption;
-
-    deliveryOptions.forEach((option) => {
-      // check for matching id
-      if (option.id === deliveryOptionId) {
-        deliveryOption = option;
-      }
-    });
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
 
 
     const today = dayjs();
@@ -131,7 +119,8 @@ export function renderOrderSummary() {
             itemQuantity.innerHTML = cartItem.quantity;
           }
         }
-      })
+      });
+      renderOrderSummary();
     });
   });
 
@@ -140,7 +129,6 @@ export function renderOrderSummary() {
   addBtn.forEach((addBtn)=>{
     addBtn.addEventListener('click', ()=>{
       const productId = addBtn.dataset.productId
-
       cart.forEach((cartItem)=>{
         let itemQuantity = document.querySelector(`.js-item-quantity-${productId}`);
         if(cartItem.productId === productId) {
@@ -152,7 +140,7 @@ export function renderOrderSummary() {
             itemQuantity.innerHTML = cartItem.quantity;
           }
         }
-      })
+      });
     });
   });
 }
