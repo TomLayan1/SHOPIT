@@ -3,6 +3,7 @@ import { shopitProduct, getProduct } from '../../../data/products.js';
 import { formatCurrency } from '../../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions, getDeliveryOption } from '../../../data/deliveryOption.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 // Put all the codes in a function and re-run them by calling the function whenever changes are made.
 export function renderOrderSummary() {
@@ -85,6 +86,7 @@ export function renderOrderSummary() {
       updateDeliveryOption(productId, deliveryOptionId);
       // call the renderOrderSummary function to re-run the code when delivery options are selected
       renderOrderSummary();
+      renderPaymentSummary();
     });
   });
 
@@ -98,6 +100,8 @@ export function renderOrderSummary() {
 
       const container = document.querySelector(`.js-main-item-container-${productId}`);
       container.remove();
+
+      renderPaymentSummary();
     })
   })
 
@@ -120,7 +124,8 @@ export function renderOrderSummary() {
           }
         }
       });
-      renderOrderSummary();
+
+      renderPaymentSummary();
     });
   });
 
@@ -141,6 +146,8 @@ export function renderOrderSummary() {
           }
         }
       });
+
+      renderPaymentSummary();
     });
   });
 }
