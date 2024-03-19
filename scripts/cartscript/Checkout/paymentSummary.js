@@ -24,10 +24,15 @@ export function renderPaymentSummary() {
   const estimatedTax = totalBeforeTax * 0.1;
   const totalOrderPrice = totalBeforeTax + estimatedTax;
 
+  // to display the quantity of items in the payment summary
+  let cartQuantity = 0;
+  cart.forEach((cartItem)=> {
+    cartQuantity += cartItem.quantity;
+  }) 
   // Generate the paymentSummary HTML 
   const paymentSummaryHTML = `
         <div class="item-summary-container">
-          <p class="items-summary">Items(1):</p>
+          <p class="items-summary">Items(${cartQuantity}):</p>
           <p class="items-price-sum">$${formatCurrency(productPriceTotal)}</p>
         </div>
         <div class="shipping-summary-container">
