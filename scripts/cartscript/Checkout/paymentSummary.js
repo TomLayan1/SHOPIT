@@ -29,6 +29,13 @@ export function renderPaymentSummary() {
   cart.forEach((cartItem)=> {
     cartQuantity += cartItem.quantity;
   }) 
+
+  // Generate the checkout number
+  const itemNumber = `
+    <h1 class="checkout">checkout (<span class="js-checkout-quantity">${cartQuantity} items</span>)</h1>
+  `;
+  document.querySelector('.checkout-bx').innerHTML = itemNumber
+
   // Generate the paymentSummary HTML 
   const paymentSummaryHTML = `
         <div class="item-summary-container">
